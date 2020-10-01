@@ -1,0 +1,117 @@
+﻿<Window x:Class="Tema1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:p="clr-Tema1.Properties"
+        xmlns:local="clr-namespace:Tema1"
+        mc:Ignorable="d"
+        Title="Calculator-SA" Height="570" Width="400" Loaded="Window_Loaded" ResizeMode="NoResize" Icon="myHermosa.ico">
+ 
+    <Grid FocusManager.FocusedElement="{Binding ElementName=txtDisplay}">
+
+       
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+
+
+        </Grid.RowDefinitions>
+        <WrapPanel Margin="0,0,9.6,35" Grid.ColumnSpan="4">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_Menu" Width="50" FontFamily="Veranda" FontSize="13" BorderThickness="0.3" BorderBrush="Black">
+                    <MenuItem Header="_Copy" Click="MenuItem1_Click"/>
+                    <MenuItem Header="_Paste" Click="MenuItem2_Click" />
+                    <MenuItem Header="_Cut" Click="MenuItem3_Click" />
+                    <Separator />
+                    <MenuItem Header="_Exit" />
+                </MenuItem>
+            </Menu>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_Help" Width="50" FontFamily="Veranda" FontSize="13" BorderThickness="0.3" BorderBrush="Black">
+                    <MenuItem Header="_About"  >
+                        <TextBlock>Stefan Adriana
+                 </TextBlock>
+                        <TextBlock Text="{Binding Source={x:Static sys:Environment.OSVersion}}"> </TextBlock>
+                        <TextBlock x:Name="link">   
+                        <Hyperlink NavigateUri="https://intranet.unitbv.ro/Stefan_Adriana" RequestNavigate="Hyperlink_Click">https://intranet.unitbv.ro/Stefan_Adriana</Hyperlink>
+                        </TextBlock>
+                    </MenuItem>>
+
+                    <Separator />
+                    <MenuItem Header="_Exit" />
+                </MenuItem>
+            </Menu>
+            <CheckBox x:Name="DGR"  Checked="DG_Checked" Unchecked="DG_Unchecked" FontFamily="Veranda" FontSize="13">DigitG RO</CheckBox>
+            <CheckBox x:Name="DGE" Checked="DGE_Checked" Unchecked="DGE_Unchecked" FontFamily="Veranda" FontSize="13">DigitG EN</CheckBox>
+
+            
+        </WrapPanel >
+        <!--Numere-->
+        <Button x:Name="btn0" Grid.Row="8" Grid.Column="1" Click="btn0_Click" Style="{StaticResource RoundButtonTemplate}">0</Button>
+        <Button x:Name="btn1" Grid.Row="7" Grid.Column="0" Click="btn1_Click" Style="{StaticResource RoundButtonTemplate}">1</Button>
+        <Button x:Name="btn2" Grid.Row="7" Grid.Column="1" Click="btn2_Click" Style="{StaticResource RoundButtonTemplate}">2</Button>
+        <Button x:Name="btn3" Grid.Row="7" Grid.Column="2" Click="btn3_Click" Style="{StaticResource RoundButtonTemplate}">3</Button>
+
+        <Button x:Name="btn4" Grid.Row="6" Grid.Column="0" Click="btn4_Click" Style="{StaticResource RoundButtonTemplate}">4</Button>
+        <Button x:Name="btn5" Grid.Row="6" Grid.Column="1" Click="btn5_Click" Style="{StaticResource RoundButtonTemplate}">5</Button>
+        <Button x:Name="btn6" Grid.Row="6" Grid.Column="2" Click="btn6_Click" Style="{StaticResource RoundButtonTemplate}">6</Button>
+
+        <Button x:Name="btn7" Grid.Row="5" Grid.Column="0" Click="btn7_Click" Style="{StaticResource RoundButtonTemplate}">7</Button>
+        <Button x:Name="btn8" Grid.Row="5" Grid.Column="1" Click="btn8_Click" Style="{StaticResource RoundButtonTemplate}">8</Button>
+        <Button x:Name="btn9" Grid.Row="5" Grid.Column="2" Click="btn9_Click" Style="{StaticResource RoundButtonTemplate}">9</Button>
+        
+        <!--Operatii aritmetice-->
+        <Button x:Name="btnEgal" Grid.Row="8" Grid.Column="3" Click="btnEgal_Click" Style="{StaticResource RoundButtonTemplate}">=</Button>
+        <Button x:Name="btnPlus" Grid.Row="7" Grid.Column="3" Click="btnPlus_Click" Style="{StaticResource RoundButtonTemplate}">+</Button>
+        <Button x:Name="btnMinus" Grid.Row="6" Grid.Column="3" Click="btnMinus_Click" Style="{StaticResource RoundButtonTemplate}">-</Button>
+        <Button x:Name="btnInmultire" Grid.Row="5" Grid.Column="3" Click="btnInmultire_Click" Style="{StaticResource RoundButtonTemplate}">*</Button>
+        <Button x:Name="btnImpartire" Grid.Row="4" Grid.Column="3" Click="btnImpartire_Click" Style="{StaticResource RoundButtonTemplate}">/</Button>
+
+        <!--Transformari-->
+        <Button x:Name="btnInversare" Grid.Row="4" Grid.Column="0" Click="btnInversare_Click" Style="{StaticResource RoundButtonTemplate}">1/x</Button>
+        <Button x:Name="btnPatrat" Grid.Row="4" Grid.Column="1" Click="btnPatrat_Click" Style="{StaticResource RoundButtonTemplate}">x²</Button>
+        <Button x:Name="btnRadical" Grid.Row="4" Grid.Column="2" Click="btnRadical_Click" Style="{StaticResource RoundButtonTemplate}">√x</Button>
+        <Button x:Name="btnPolaritate" Grid.Row="8" Grid.Column="0" Click="btnPolaritate_Click" Style="{StaticResource RoundButtonTemplate}">+/-</Button>
+
+        <!--Punct-->
+        <Button x:Name="btnPunct" Grid.Row="8" Grid.Column="2" Click="btnPunctClick" Style="{StaticResource RoundButtonTemplate}">.</Button>
+
+        <!--Stergeri-->
+        <Button x:Name="btnCE" Grid.Row="3" Grid.Column="1" Click="btnCE_Click" Style="{StaticResource RoundButtonTemplate}">CE</Button>
+        <Button x:Name="btnC" Grid.Row="3" Grid.Column="2" Click="btnC_Click" Style="{StaticResource RoundButtonTemplate}">C</Button>
+        <Button x:Name="btnDelete" Grid.Row="3" Grid.Column="3" Click="btnDelete_Click" Style="{StaticResource RoundButtonTemplate}">Del</Button>
+        
+        <!--Procent-->
+
+        <Button x:Name="btnProcent" Grid.Row="3" Grid.Column="0" Click="btnProcent_Click" Style="{StaticResource RoundButtonTemplate}">%</Button>
+
+        <!--Memorari-->
+        <Button x:Name="btnMMinus" Grid.Row="2" Grid.Column="1" Click="btnMMinus_Click" Style="{StaticResource RoundButtonTemplate}">M-</Button>
+        <Button x:Name="btnMPlus" Grid.Row="2" Grid.Column="2" Click="btnMPlus_Click" Style="{StaticResource RoundButtonTemplate}">M+</Button>
+        <Button x:Name="btnMR" Grid.Row="2" Grid.Column="3" Click="btnMR_Click" Style="{StaticResource RoundButtonTemplate}">MR</Button>
+        <Button x:Name="btnMC" Grid.Row="2" Grid.Column="0" Click="btnMC_Click" Style="{StaticResource RoundButtonTemplate}">MC</Button>
+
+
+
+        <!--Text Field-->
+        <TextBox x:Name="txtDisplay" BorderThickness="3" BorderBrush="Black" IsReadOnly="True" TextAlignment="Right" FontSize="30" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" PreviewKeyDown="txtDisplay_KeyDown">0</TextBox>
+    </Grid>
+   
+</Window>
